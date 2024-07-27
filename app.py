@@ -114,7 +114,6 @@ async def predict(request: Request,
                    V28: float = Form(...)):
     features = {
         'time': time,
-        'amount': amount,
         'V1': V1,
         'V2': V2,
         'V3': V3,
@@ -142,7 +141,8 @@ async def predict(request: Request,
         'V25': V25,
         'V26': V26,
         'V27': V27,
-        'V28': V28
+        'V28': V28,
+        'amount': amount
     }
     result = predict_scam(features)
     return templates.TemplateResponse("predict.html", {"request": request, "result": result})
